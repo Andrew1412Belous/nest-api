@@ -24,5 +24,6 @@ const getMongoString = (configService: ConfigService) =>
 
 const getMongoOptions = () => ({
 	useNewUrlParser: true,
+	// useCreateIndex: true,
 	useUnifiedTopology: true,
 });
