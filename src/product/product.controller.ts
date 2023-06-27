@@ -12,6 +12,7 @@ import {
 	UsePipes,
 	ValidationPipe,
 } from '@nestjs/common';
+
 import { ProductModel } from './product.model';
 import { FindProductDto } from './dto/find-product.dto';
 import { CreateProductDto } from './dto/create-product.dto';
