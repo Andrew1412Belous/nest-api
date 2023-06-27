@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { index } from '@typegoose/typegoose';
 
 export type TopPageDocument = HydratedDocument<TopPageModel>;
 
@@ -37,7 +36,7 @@ export class TopPageAdvantage {
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-@Schema({ timestamps: true, sparse: true })
+@Schema({ timestamps: true })
 export class TopPageModel {
 	@Prop({ enum: TopLevelCategory })
 	firstCategory: TopLevelCategory;
