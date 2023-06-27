@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
+import { index } from '@typegoose/typegoose';
 
 export type TopPageDocument = HydratedDocument<TopPageModel>;
 
@@ -34,7 +35,9 @@ export class TopPageAdvantage {
 	description: string;
 }
 
-@Schema({ timestamps: true })
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+@Schema({ timestamps: true, sparse: true })
 export class TopPageModel {
 	@Prop({ enum: TopLevelCategory })
 	firstCategory: TopLevelCategory;
@@ -47,6 +50,12 @@ export class TopPageModel {
 
 	@Prop()
 	title: string;
+
+	@Prop()
+	metaTitle: string;
+
+	@Prop()
+	metaDescription: string;
 
 	@Prop()
 	category: string;
@@ -67,4 +76,10 @@ export class TopPageModel {
 	tags: string[];
 }
 
-export const TopPageSchema = SchemaFactory.createForClass(TopPageModel);
+const TopPageSchema = SchemaFactory.createForClass(TopPageModel);
+
+TopPageSchema.index({
+	'$**': 'text',
+});
+
+export { TopPageSchema };
