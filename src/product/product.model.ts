@@ -3,7 +3,7 @@ import { HydratedDocument } from 'mongoose';
 
 export type ProductDocument = HydratedDocument<ProductModel>;
 
-@Schema()
+@Schema({ timestamps: true })
 class ProductCharacteristic {
 	@Prop()
 	name: string;
@@ -24,7 +24,7 @@ export class ProductModel {
 	price: number;
 
 	@Prop()
-	oldPrice: number;
+	oldPrice?: number;
 
 	@Prop()
 	credit: number;
