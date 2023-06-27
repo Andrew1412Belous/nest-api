@@ -39,6 +39,9 @@ export class TopPageModel {
 	@Prop({ enum: TopLevelCategory })
 	firstCategory: TopLevelCategory;
 
+	@Prop({ unique: true })
+	alias: string;
+
 	@Prop()
 	secondCategory: string;
 
